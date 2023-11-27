@@ -372,7 +372,7 @@ void sdfBuildDistanceFieldNoAlloc(unsigned char *out, int outstride, float outsi
         {
             float dout = sqrtf(tdist[x + y * width]) * outside_scale;
             float din = sqrtf(tdist[x + y * width]) * inside_scale;
-            float alpha = img[x + y * stride] > 255 ? din * 0.5f + 0.5f : (1.0f - dout) * 0.5f;
+            float alpha = img[x + y * stride] > 127 ? din * 0.5f + 0.5f : (1.0f - dout) * 0.5f;
             out[x + y * outstride] = (unsigned char)(sdf__clamp01(alpha + 0.5f / 255) * 255.0f);
         }
     }
